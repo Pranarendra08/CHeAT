@@ -1,6 +1,9 @@
 <resources>
     <string name="app_name">CHeAT</string>
+    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="on_boarding_desc_1"><b>CHeAT</b> bisa kasih kamu rekomendasi resep\nmakanan dari bahan-bahan yang kamu punya</string>
     <string name="on_boarding_desc_2"><b>CHeAT</b> juga bisa hitung kalori\ndari makanan yang kamu masak</string>
+    <string name="onboarding_welcome_text">SELAMAT DATANG</string>
+    <string name="text_start_button">MULAI</string>
 </resources>
