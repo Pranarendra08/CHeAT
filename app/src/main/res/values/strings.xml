@@ -6,4 +6,7 @@
     <string name="on_boarding_desc_2"><b>CHeAT</b> juga bisa hitung kalori\ndari makanan yang kamu masak</string>
     <string name="onboarding_welcome_text">SELAMAT DATANG</string>
     <string name="text_start_button">MULAI</string>
+    <string name="cheat_bot">CHeAT Bot</string>
+    <string name="food_list">Food List</string>
+    <string name="tracker">Tracker</string>
 </resources>

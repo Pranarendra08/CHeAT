@@ -1,5 +1,6 @@
 package com.example.cheat
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
@@ -15,10 +16,16 @@ class OnBoardingActivity : AppCompatActivity() {
         binding = ActivityOnBoardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.hide()
+
         val sectionsPagerAdapter = SectionsPagerAdapter(this)
         val viewPager: ViewPager2 = binding.onBoardingViewPager
         val wormDotsIndicator = binding.wormDotsIndicator
         viewPager.adapter = sectionsPagerAdapter
         wormDotsIndicator.attachTo(viewPager)
+
+        binding.startButton.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
 }

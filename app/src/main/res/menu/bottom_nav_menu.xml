@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_cheat_bot"
+        android:icon="@drawable/ic_cheat_bot"
+        android:title="@string/cheat_bot" />
+
+    <item
+        android:id="@+id/navigation_food_list"
+        android:icon="@drawable/ic_food_list"
+        android:title="@string/food_list" />
+
+    <item
+        android:id="@+id/navigation_tracker"
+        android:icon="@drawable/ic_tracker"
+        android:title="@string/tracker" />
+
+</menu>
