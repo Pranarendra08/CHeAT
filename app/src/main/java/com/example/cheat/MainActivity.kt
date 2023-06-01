@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_cheat_bot, R.id.navigation_food_list, R.id.navigation_tracker
             )
         )
-//        setupActionBarWithNavController(navController, appBarConfiguration)
+        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
 }
