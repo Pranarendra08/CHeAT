@@ -18,7 +18,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tv_detail_nama_makanan"
+        android:id="@+id/tv_chat_nama_makanan"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -41,7 +41,7 @@
         android:fontFamily="@font/poppins"
         android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@+id/iv_detail_foto_makanan"
-        app:layout_constraintTop_toBottomOf="@+id/tv_detail_nama_makanan"
+        app:layout_constraintTop_toBottomOf="@+id/tv_chat_nama_makanan"
         tools:text="Servings : 4" />
 
     <TextView
