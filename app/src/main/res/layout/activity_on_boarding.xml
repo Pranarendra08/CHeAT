@@ -7,7 +7,7 @@
     android:padding="8dp"
     android:background="@color/white_ish"
     android:orientation="vertical"
-    tools:context=".OnBoardingActivity">
+    tools:context=".ui.onboarding.OnBoardingActivity">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/welcome_text"

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/white_ish"
-    tools:context=".ui.OnBoardingFirstFragment">
+    tools:context=".ui.onboarding.OnBoardingFirstFragment">
 
     <com.google.android.material.textview.MaterialTextView
         android:layout_width="wrap_content"
