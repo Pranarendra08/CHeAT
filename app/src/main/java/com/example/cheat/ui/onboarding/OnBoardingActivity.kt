@@ -1,9 +1,10 @@
-package com.example.cheat
+package com.example.cheat.ui.onboarding
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
+import com.example.cheat.MainActivity
 import com.example.cheat.adapter.SectionsPagerAdapter
 import com.example.cheat.databinding.ActivityOnBoardingBinding
 
