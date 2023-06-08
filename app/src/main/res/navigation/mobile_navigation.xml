@@ -22,4 +22,12 @@
         android:name="com.example.cheat.ui.tracker.TrackerFragment"
         android:label="@string/tracker"
         tools:layout="@layout/fragment_tracker" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.example.cheat.ui.profile.ProfileFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile" />
+
+
 </navigation>
