@@ -86,7 +86,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button2"
+        android:id="@+id/btn_login"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -94,12 +94,13 @@
         android:layout_marginEnd="8dp"
         android:background="@drawable/shape_button_login"
         android:text="Login"
+        android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/button3"
+        android:id="@+id/btn_new_account"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -107,9 +108,10 @@
         android:layout_marginEnd="8dp"
         android:background="@drawable/shape_button_new_account"
         android:text="Create New Account"
+        android:textAllCaps="false"
         app:backgroundTint="@color/green_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
