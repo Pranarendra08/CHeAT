@@ -7,6 +7,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.cheat.MainActivity
 import com.example.cheat.adapter.SectionsPagerAdapter
 import com.example.cheat.databinding.ActivityOnBoardingBinding
+import com.example.cheat.ui.login.LoginActivity
 
 class OnBoardingActivity : AppCompatActivity() {
 
@@ -26,7 +27,7 @@ class OnBoardingActivity : AppCompatActivity() {
         wormDotsIndicator.attachTo(viewPager)
 
         binding.startButton.setOnClickListener {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
         }
     }
 }
