@@ -1,7 +1,9 @@
 package com.example.cheat.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.cheat.data.remote.response.PostLoginResponse
 import com.example.cheat.data.remote.response.PostRegisterResponse
 import com.example.cheat.data.remote.retrofit.ApiService
 import com.example.cheat.pref.UserPreference
@@ -43,6 +45,37 @@ class CheatRepository(private val userPreference: UserPreference, private val ap
 
             override fun onFailure(call: Call<PostRegisterResponse>, t: Throwable) {
                 _isLoading.value = false
+                _toastFailed.value = Event(t.message.toString())
+            }
+
+        })
+    }
+
+    fun loginUserAccount(username: String, password: String) {
+        _isLoading.value = true
+        userPreference.saveUsername(username)
+        val client = apiService.loginUserAccount(username, password)
+        client.enqueue(object : Callback<PostLoginResponse> {
+            override fun onResponse(
+                call: Call<PostLoginResponse>,
+                response: Response<PostLoginResponse>
+            ) {
+                _isLoading.value = false
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        userPreference.saveCookie(response.headers()["set-cookie"].toString())
+                        _toastSuccess.value = Event(response.body()?.message.toString())
+                        Log.d("CHEAT_REPOSITORY", "Ini adalah header dari login response: ${userPreference.getCookie()}")
+                        Log.d("CHEAT_REPOSITORY", "Ini adalah header dari login response: ${userPreference.getUsername()}")
+                    }
+                }
+                else {
+                    _toastFailed.value = Event(response.body()?.message.toString())
+                }
+            }
+
+            override fun onFailure(call: Call<PostLoginResponse>, t: Throwable) {
                 _toastFailed.value = Event(t.message.toString())
             }
 

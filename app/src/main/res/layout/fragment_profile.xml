@@ -8,37 +8,39 @@
     tools:context=".ui.profile.ProfileFragment">
 
     <TextView
-        android:id="@+id/tv_nama_user"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/profile_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/poppins_semibold"
+        android:text="Hi,"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        tools:text="Pranarendra D." />
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_email_user"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/profile_username"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_nama_user"
+        app:layout_constraintTop_toBottomOf="@id/profile_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/poppins"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/poppins_semibold"
         android:textColor="@color/black"
-        android:textSize="20sp"
-        tools:text="pranarendra@gmail.com" />
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:text="Pranarendra D." />
+
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_logout"
         app:backgroundTint="@color/green_dark"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_email_user"
+        app:layout_constraintTop_toBottomOf="@+id/profile_username"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -46,6 +48,7 @@
         android:layout_marginEnd="8dp"
         android:background="@drawable/shape_button_new_account"
         android:text="Logout"
+        android:fontFamily="@font/poppins_semibold"
         android:textAllCaps="false" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
