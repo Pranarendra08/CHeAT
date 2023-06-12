@@ -1,7 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.CHeAT" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+<!--    <style name="Base.Theme.CHeAT" parent="Theme.Material3.DayNight.NoActionBar">-->
+<!--    <style name="Base.Theme.CHeAT" parent="Theme.Material3.DayNight">-->
+    <style name="Base.Theme.CHeAT" parent="Theme.MaterialComponents.Light">
+
+    <!-- Customize your dark theme here. -->
+         <item name="colorPrimary">@color/green_stabilo</item>
     </style>
+    <style name="Theme.CHeAT" parent="Base.Theme.CHeAT" />
+
+
 </resources>

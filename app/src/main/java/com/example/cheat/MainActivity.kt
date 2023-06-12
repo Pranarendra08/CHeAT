@@ -28,7 +28,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_cheat_bot, R.id.navigation_food_list, R.id.navigation_tracker, R.id.navigation_profile
             )
         )
+
+
         setupActionBarWithNavController(navController, appBarConfiguration)
+        supportActionBar?.apply {
+            setTitle(R.string.app_name)
+        }
         navView.setupWithNavController(navController)
     }
 
