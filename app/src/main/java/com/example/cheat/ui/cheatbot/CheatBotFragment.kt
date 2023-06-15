@@ -66,8 +66,8 @@ class CheatBotFragment : Fragment() {
                             val id = menu.id.toString()
                             val recipeName = menu.recipeName.toString()
                             val calories = menu.calories.toString()
-                            val image = menu.image.toString()
-
+                            val imgLinkSplit = menu.image.split("/")
+                            val image = imgLinkSplit[5].toString()
 //                            val messageObject = Message(message)
                             val chatbotObject = Chatbot(id, recipeName, calories, image)
                             messageArray.add(messageObject)
