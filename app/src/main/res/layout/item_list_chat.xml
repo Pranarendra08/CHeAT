@@ -12,7 +12,9 @@
         android:layout_height="wrap_content"
         android:background="@drawable/shape_chat_send"
         android:padding="8dp"
-        android:text="This is message"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/blue_dark"
+        android:text="@string/message_sender_template"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,12 +33,14 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="8dp"
             android:background="@drawable/shape_chat_receive">
 
             <ImageView
                 android:id="@+id/iv_chat_foto_receive"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:contentDescription="@string/recipe_photo"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -46,9 +50,11 @@
                 android:id="@+id/tv_chat_nama_makanan_receive"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
                 android:fontFamily="@font/poppins_semibold"
                 android:textColor="@color/white_ish"
+                android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/iv_chat_foto_receive"
                 app:layout_constraintTop_toTopOf="@+id/iv_chat_foto_receive"
                 app:lineHeight="20dp"

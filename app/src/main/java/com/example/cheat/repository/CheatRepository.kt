@@ -140,12 +140,12 @@ class CheatRepository(private val userPreference: UserPreference, private val ap
                         Log.d(TAG, "${response.body()}")
                     }
                 } else {
-                    _toastFailed.value = Event("Error")
+                    _toastFailed.value = Event("Error : ${response.body()}")
                 }
             }
 
             override fun onFailure(call: Call<PostChatbotResponse>, t: Throwable) {
-                _toastFailed.value = Event("Error Apps Onfailure")
+                _toastFailed.value = Event("Error : ${t.message}")
             }
 
         })
