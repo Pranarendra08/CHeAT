@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cheat.adapter.ChatBotAdapter
@@ -63,16 +64,23 @@ class CheatBotFragment : Fragment() {
 
                         cheatbotViewModel.chatbot(message)
 
+                        cheatbotViewModel.toastFailed.observe(viewLifecycleOwner) {
+                            it.getContentIfNotHandled().let { toastText ->
+                                Toast.makeText(requireContext(), toastText, Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                        }
+
                         cheatbotViewModel.chatbot.observe(viewLifecycleOwner) { responses ->
                             responses.forEach { menu ->
                                 val imgLinkSplit = menu.image.split("/")
-                                val image = imgLinkSplit[5].toString()
+                                val image = imgLinkSplit[5]
                                 val receivedChat = Chat(
                                     "",
                                     RECEIVE_ID,
                                     image,
-                                    menu.recipeName.toString(),
-                                    menu.calories.toString(),
+                                    menu.recipeName,
+                                    menu.calories,
                                     menu.id.toString()
                                 )
                                 adapter.insertMessage(receivedChat)

@@ -29,4 +29,6 @@
     <string name="chatbot_hint">Type in the ingredients you have...</string>
     <string name="hi">Hi,</string>
     <string name="logout">Logout</string>
+    <string name="message_sender_template">This is message</string>
+    <string name="recipe_photo">Recipe Photo</string>
 </resources>
