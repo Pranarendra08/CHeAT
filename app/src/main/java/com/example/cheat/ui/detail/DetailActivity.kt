@@ -3,9 +3,11 @@ package com.example.cheat.ui.detail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.cheat.R
 import com.example.cheat.adapter.IngredientAdapter
 import com.example.cheat.adapter.InstructionAdapter
 import com.example.cheat.databinding.ActivityDetailBinding
@@ -53,6 +55,10 @@ class DetailActivity : AppCompatActivity() {
 
         detailViewModel.isLoading.observe(this) {
             showLoading(it)
+        }
+
+        binding.btnAddTracker.setOnClickListener {
+            Toast.makeText(this, getString(R.string.tracker_text), Toast.LENGTH_SHORT).show()
         }
     }
 
