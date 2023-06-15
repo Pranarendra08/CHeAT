@@ -7,11 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.cheat.R
 
-/**
- * A simple [Fragment] subclass.
- * Use the [OnBoardingFirstFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class OnBoardingFirstFragment : Fragment() {
 
     override fun onCreateView(

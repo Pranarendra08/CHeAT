@@ -2,15 +2,13 @@ package com.example.cheat.ui.profile
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.cheat.R
+import androidx.fragment.app.Fragment
 import com.example.cheat.databinding.FragmentProfileBinding
 import com.example.cheat.pref.UserPreference
 import com.example.cheat.ui.login.LoginActivity
-
 
 class ProfileFragment : Fragment() {
 
@@ -40,6 +38,7 @@ class ProfileFragment : Fragment() {
                 btnLogout.setOnClickListener {
                     startActivity(Intent(requireContext(), LoginActivity::class.java))
                     userPreference.deleteCookie()
+                    userPreference.deleteUsername()
                     activity!!.finish()
                 }
             }

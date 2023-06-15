@@ -26,6 +26,8 @@ class LoginActivity : AppCompatActivity() {
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.hide()
+
         userPreference = UserPreference(this)
 
         if (userPreference.getCookie() != null) {
@@ -38,10 +40,10 @@ class LoginActivity : AppCompatActivity() {
             val password = binding.passwordInput.text.toString()
             when {
                 username.isEmpty() -> {
-                    binding.usernameInput.error = "Enter your email"
+                    binding.usernameInput.error = "Input your username"
                 }
                 password.isEmpty() -> {
-                    binding.passwordInput.error = "Enter your password"
+                    binding.passwordInput.error = "Input your password"
                 }
                 else -> {
                     loginViewModel.loginUserAccount(username, password)
