@@ -5,9 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.cheat.di.Injection
-import com.example.cheat.pref.UserPreference
 import com.example.cheat.repository.CheatRepository
-import com.example.cheat.ui.register.RegisterViewModel
 import com.example.cheat.utils.Event
 
 class LoginViewModel(private val cheatRepository: CheatRepository) : ViewModel() {

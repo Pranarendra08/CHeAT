@@ -4,9 +4,11 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.cheat.data.remote.response.PostChatbotResponse
+import com.example.cheat.data.remote.response.PredictionsItem
+import com.example.cheat.data.remote.response.GetRecipeDetailResponse
 import com.example.cheat.data.remote.response.PostLoginResponse
 import com.example.cheat.data.remote.response.PostRegisterResponse
-import com.example.cheat.data.remote.response.PredictionsItem
+import com.example.cheat.data.remote.retrofit.ApiConfig
 import com.example.cheat.data.remote.retrofit.ApiService
 import com.example.cheat.pref.UserPreference
 import com.example.cheat.utils.Event
@@ -27,6 +29,10 @@ class CheatRepository(private val userPreference: UserPreference, private val ap
 
     private val _chatbot = MutableLiveData<ArrayList<PredictionsItem>>()
     val chatbot: LiveData<ArrayList<PredictionsItem>> = _chatbot
+  
+    private val _detailRecipe = MutableLiveData<GetRecipeDetailResponse>()
+    val detailRecipe: LiveData<GetRecipeDetailResponse> = _detailRecipe
+  
     fun createUserAccount(username: String, password: String) {
         _isLoading.value = true
         val client = apiService.createUserAccount(username, password)
@@ -43,13 +49,13 @@ class CheatRepository(private val userPreference: UserPreference, private val ap
                     }
                 }
                 else {
-                    _toastFailed.value = Event(response.body()?.message.toString())
+                    _toastFailed.value = Event("Username already taken")
                 }
             }
 
             override fun onFailure(call: Call<PostRegisterResponse>, t: Throwable) {
                 _isLoading.value = false
-                _toastFailed.value = Event(t.message.toString())
+                _toastFailed.value = Event("Error: ${t.message.toString()}")
             }
         })
     }
@@ -74,14 +80,47 @@ class CheatRepository(private val userPreference: UserPreference, private val ap
                     }
                 }
                 else {
-                    _toastFailed.value = Event(response.body()?.message.toString())
+                    _toastFailed.value = Event("Invalid Credentials")
+                    Log.d("CHEAT_REPOSITORY", "Ini adalah login response: ${response.body()?.message}")
                 }
             }
 
             override fun onFailure(call: Call<PostLoginResponse>, t: Throwable) {
-                _toastFailed.value = Event(t.message.toString())
+                _isLoading.value = false
+                _toastFailed.value = Event("Error: ${t.message.toString()}")
+                Log.d("CHEAT_REPOSITORY", "Ini adalah login response: ${t.message}")
+            }
+        })
+    }
+
+    fun getRecipeDetail(id: String) {
+        _isLoading.value = true
+        val client = ApiConfig.getApiService().getRecipeDetail(id)
+        client.enqueue(object : Callback<GetRecipeDetailResponse> {
+            override fun onResponse(
+                call: Call<GetRecipeDetailResponse>,
+                response: Response<GetRecipeDetailResponse>
+            ) {
+                _isLoading.value = false
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        _detailRecipe.value = response.body()
+                        Log.d("CHEAT_REPOSITORY", "Ini adalah data dari get recipe detail + ${response.body()}")
+                    }
+                }
+                else {
+                    _toastFailed.value = Event(response.body().toString())
+                    Log.d("CHEAT_REPOSITORY", "Ini adalah recipedetail response: ${response.body()}")
+                }
             }
 
+            override fun onFailure(call: Call<GetRecipeDetailResponse>, t: Throwable) {
+                _isLoading.value = false
+                _toastFailed.value = Event(t.message.toString())
+                Log.d("CHEAT_REPOSITORY", "Ini adalah recipedetail response: ${t.message}")
+
+            }
         })
     }
 

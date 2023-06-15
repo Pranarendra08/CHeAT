@@ -2,12 +2,14 @@
     <string name="app_name">CHeAT</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="on_boarding_desc_1"><b>CHeAT</b> bisa kasih kamu rekomendasi resep\nmakanan dari bahan-bahan yang kamu punya</string>
-    <string name="on_boarding_desc_2"><b>CHeAT</b> juga bisa hitung kalori\ndari makanan yang kamu masak</string>
-    <string name="onboarding_welcome_text">SELAMAT DATANG</string>
-    <string name="text_start_button">MULAI</string>
+    <string name="on_boarding_desc_1"><b>CHeAT</b> can give you recommendations for food\nrecipes from the ingredients you have.</string>
+    <string name="on_boarding_desc_2"><b>CHeAT</b> can also track the calories\nfrom the food you cook.</string>
+    <string name="onboarding_welcome_text">Welcome</string>
+    <string name="text_start_button">Start</string>
     <string name="cheat_bot">CHeAT Bot</string>
     <string name="food_list">Food List</string>
     <string name="tracker">Tracker</string>
     <string name="profile">Profile</string>
+    <string name="food_list_text">Food List feature currently not available</string>
+    <string name="tracker_text">Tracker feature currently not available</string>
 </resources>
