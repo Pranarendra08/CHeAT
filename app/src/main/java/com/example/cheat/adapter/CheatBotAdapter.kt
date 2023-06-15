@@ -73,10 +73,10 @@ class CheatBotAdapter(val context: Context, val messageList: ArrayList<Message>,
         val chatbotMessage = chatbotList[position]
         if (chatbotMessage.id != null) { //ketika userid == currentMessage.senderId
             Log.d("ADAPTER BENER1", "ITEM_SENT")
-            return ITEM_SENT//  ITEM_SENT
+            return ITEM_RECEIVE//  ITEM_SENT
         } else {
             Log.d("ADAPTER BENER1", "ITEM_RECEIVE")
-            return ITEM_RECEIVE
+            return ITEM_SENT
         }
 
     }
