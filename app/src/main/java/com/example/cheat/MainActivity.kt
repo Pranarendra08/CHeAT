@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-
         setupActionBarWithNavController(navController, appBarConfiguration)
         supportActionBar?.apply {
             setTitle(R.string.app_name)
