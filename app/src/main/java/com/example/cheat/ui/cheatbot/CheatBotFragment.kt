@@ -5,14 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.cheat.adapter.CheatBotAdapter
+import com.example.cheat.adapter.ChatBotAdapter
 import com.example.cheat.databinding.FragmentCheatBotBinding
 import com.example.cheat.pref.UserPreference
-import com.example.cheat.utils.Chatbot
-import com.example.cheat.utils.Message
+import com.example.cheat.utils.Chat
+import com.example.cheat.utils.Constants.RECEIVE_ID
+import com.example.cheat.utils.Constants.SEND_ID
 
 
 class CheatBotFragment : Fragment() {
@@ -24,8 +24,8 @@ class CheatBotFragment : Fragment() {
     }
     private lateinit var userPreference: UserPreference
 
-    private val messageArray = ArrayList<Message>()
-    private val chatbotArray = ArrayList<Chatbot>()
+    private lateinit var adapter: ChatBotAdapter
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,45 +39,47 @@ class CheatBotFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        adapter = ChatBotAdapter()
         initViews()
     }
 
     private fun initViews() {
         if (activity != null && context != null) {
             with(binding) {
+
+                rvChatbox.adapter = adapter
+                rvChatbox.layoutManager = LinearLayoutManager(requireContext())
+
                 icSendButton.setOnClickListener {
+                    tvContoh.text = ""
                     val message = edtCheatbotMessage.text.toString()
-                    edtCheatbotMessage.setText("")
-                    Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
 
-                    cheatbotViewModel.chatbot(message)
+                    if (message.isNotEmpty()) {
+                        edtCheatbotMessage.setText("")
+                        val chat = Chat(message, SEND_ID, "", "", "", "")
+                        adapter.insertMessage(chat)
 
-                    cheatbotViewModel.chatbot.observe(viewLifecycleOwner) { messages ->
-                        tvContoh.text = ""
+                        rvChatbox.scrollToPosition(adapter.itemCount - 1)
 
-                        val messageObject = Message(message)
+                        cheatbotViewModel.chatbot(message)
 
-                        chatbotArray.clear()
-
-                        messages.forEach { menu ->
-                            val id = menu.id.toString()
-                            val recipeName = menu.recipeName.toString()
-                            val calories = menu.calories.toString()
-                            val imgLinkSplit = menu.image.split("/")
-                            val image = imgLinkSplit[5].toString()
-
-                            val chatbotObject = Chatbot(id, recipeName, calories, image)
-                            messageArray.add(messageObject)
-                            chatbotArray.add(chatbotObject)
+                        cheatbotViewModel.chatbot.observe(viewLifecycleOwner) { responses ->
+                            responses.forEach { menu ->
+                                val imgLinkSplit = menu.image.split("/")
+                                val image = imgLinkSplit[5].toString()
+                                val receivedChat = Chat(
+                                    "",
+                                    RECEIVE_ID,
+                                    image,
+                                    menu.recipeName.toString(),
+                                    menu.calories.toString(),
+                                    menu.id.toString()
+                                )
+                                adapter.insertMessage(receivedChat)
+                                rvChatbox.scrollToPosition(adapter.itemCount - 1)
+                            }
                         }
 
-                        // Update the RecyclerView adapter only once after all messages are processed
-                        if (rvChatbox.adapter == null) {
-                            rvChatbox.layoutManager = LinearLayoutManager(requireContext())
-                            rvChatbox.adapter = CheatBotAdapter(requireContext(), messageArray, chatbotArray)
-                        } else {
-                            rvChatbox.adapter?.notifyDataSetChanged()
-                        }
                     }
                 }
             }

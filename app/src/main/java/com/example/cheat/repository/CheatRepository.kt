@@ -75,20 +75,20 @@ class CheatRepository(private val userPreference: UserPreference, private val ap
                     if (responseBody != null) {
                         userPreference.saveCookie(response.headers()["set-cookie"].toString())
                         _toastSuccess.value = Event(response.body()?.message.toString())
-                        Log.d("CHEAT_REPOSITORY", "Ini adalah header dari login response: ${userPreference.getCookie()}")
-                        Log.d("CHEAT_REPOSITORY", "Ini adalah header dari login response: ${userPreference.getUsername()}")
+                        Log.d(TAG, "Ini adalah header dari login response: ${userPreference.getCookie()}")
+                        Log.d(TAG, "Ini adalah header dari login response: ${userPreference.getUsername()}")
                     }
                 }
                 else {
                     _toastFailed.value = Event("Invalid Credentials")
-                    Log.d("CHEAT_REPOSITORY", "Ini adalah login response: ${response.body()?.message}")
+                    Log.d(TAG, "Ini adalah login response: ${response.body()?.message}")
                 }
             }
 
             override fun onFailure(call: Call<PostLoginResponse>, t: Throwable) {
                 _isLoading.value = false
                 _toastFailed.value = Event("Error: ${t.message.toString()}")
-                Log.d("CHEAT_REPOSITORY", "Ini adalah login response: ${t.message}")
+                Log.d(TAG, "Ini adalah login response: ${t.message}")
             }
         })
     }
@@ -106,19 +106,19 @@ class CheatRepository(private val userPreference: UserPreference, private val ap
                     val responseBody = response.body()
                     if (responseBody != null) {
                         _detailRecipe.value = response.body()
-                        Log.d("CHEAT_REPOSITORY", "Ini adalah data dari get recipe detail + ${response.body()}")
+                        Log.d(TAG, "Ini adalah data dari get recipe detail + ${response.body()}")
                     }
                 }
                 else {
                     _toastFailed.value = Event(response.body().toString())
-                    Log.d("CHEAT_REPOSITORY", "Ini adalah recipedetail response: ${response.body()}")
+                    Log.d(TAG, "Ini adalah recipedetail response: ${response.body()}")
                 }
             }
 
             override fun onFailure(call: Call<GetRecipeDetailResponse>, t: Throwable) {
                 _isLoading.value = false
                 _toastFailed.value = Event(t.message.toString())
-                Log.d("CHEAT_REPOSITORY", "Ini adalah recipedetail response: ${t.message}")
+                Log.d(TAG, "Ini adalah recipedetail response: ${t.message}")
 
             }
         })
@@ -137,8 +137,7 @@ class CheatRepository(private val userPreference: UserPreference, private val ap
                     val responseBody = response.body()
                     if (responseBody != null) {
                         _chatbot.value = response.body()!!.predictions
-                        Log.d("CHEATINGG", "${responseBody}")
-                        Log.d("CHEAT_REPOSITORY", "${response.body()}")
+                        Log.d(TAG, "${response.body()}")
                     }
                 } else {
                     _toastFailed.value = Event("Error")
@@ -150,5 +149,9 @@ class CheatRepository(private val userPreference: UserPreference, private val ap
             }
 
         })
+    }
+
+    companion object {
+        private const val TAG = "REPOSITORY"
     }
 }
