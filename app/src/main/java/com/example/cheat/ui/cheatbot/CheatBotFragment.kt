@@ -1,7 +1,6 @@
 package com.example.cheat.ui.cheatbot
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,13 +8,11 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.cheat.R
 import com.example.cheat.adapter.CheatBotAdapter
 import com.example.cheat.databinding.FragmentCheatBotBinding
 import com.example.cheat.pref.UserPreference
 import com.example.cheat.utils.Chatbot
 import com.example.cheat.utils.Message
-import java.util.Objects
 
 
 class CheatBotFragment : Fragment() {
@@ -26,8 +23,6 @@ class CheatBotFragment : Fragment() {
         chatbotViewModelFactory(requireContext())
     }
     private lateinit var userPreference: UserPreference
-
-    private lateinit var chatboxAdapter: CheatBotAdapter
 
     private val messageArray = ArrayList<Message>()
     private val chatbotArray = ArrayList<Chatbot>()
@@ -62,13 +57,15 @@ class CheatBotFragment : Fragment() {
 
                         val messageObject = Message(message)
 
+                        chatbotArray.clear()
+
                         messages.forEach { menu ->
                             val id = menu.id.toString()
                             val recipeName = menu.recipeName.toString()
                             val calories = menu.calories.toString()
                             val imgLinkSplit = menu.image.split("/")
                             val image = imgLinkSplit[5].toString()
-//                            val messageObject = Message(message)
+
                             val chatbotObject = Chatbot(id, recipeName, calories, image)
                             messageArray.add(messageObject)
                             chatbotArray.add(chatbotObject)

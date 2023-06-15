@@ -38,10 +38,12 @@ class DetailActivity : AppCompatActivity() {
                 tvDetailServing.text = "Servings: ${it.servings}"
                 tvDetailServingSize.text = "Serving size: ${it.servingSize}"
                 tvDetailCalories.text = "Calories: ${it.calories}"
+
                 val ingredientList = it.ingredients
                 val adapterRvIngredient = IngredientAdapter(ingredientList)
                 rvDetailIngredient.layoutManager = LinearLayoutManager(this@DetailActivity)
                 rvDetailIngredient.adapter = adapterRvIngredient
+
                 val instructionList = it.instruction
                 val adapterRvInstruction = InstructionAdapter(instructionList)
                 rvDetailInstruction.layoutManager = LinearLayoutManager(this@DetailActivity)

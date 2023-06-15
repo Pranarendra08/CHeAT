@@ -22,7 +22,6 @@ class CheatBotAdapter(val context: Context, val messageList: ArrayList<Message>,
     val ITEM_RECEIVE = 1
     val ITEM_SENT = 2
 
-
     class SentViewHolder(itemView: View): ViewHolder(itemView){
         val sendMessage = itemView.findViewById<TextView>(R.id.tv_chat_send)
     }
@@ -58,7 +57,8 @@ class CheatBotAdapter(val context: Context, val messageList: ArrayList<Message>,
             holder.receiveFoodName.text = chatbotMessage.recipeName
             holder.receiveFoodCalories.text = chatbotMessage.calories
             Glide.with(holder.itemView.context)
-                .load(chatbotMessage.image)
+                .load(BASE_IMAGE_URL + chatbotMessage.image)
+                .centerCrop()
                 .into(holder.receivePhoto)
             holder.itemView.setOnClickListener {
                 val intent = Intent(context, DetailActivity::class.java)
@@ -82,7 +82,10 @@ class CheatBotAdapter(val context: Context, val messageList: ArrayList<Message>,
     }
 
     override fun getItemCount(): Int {
-        var chatSize = chatbotList.size //+ messageList.size
-        return chatSize  //chatbotList.size +
+        return chatbotList.size
+    }
+
+    companion object {
+        private const val BASE_IMAGE_URL = "https://docs.google.com/uc?id="
     }
 }

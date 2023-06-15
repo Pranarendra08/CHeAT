@@ -12,4 +12,21 @@
     <string name="profile">Profile</string>
     <string name="food_list_text">Food List feature currently not available</string>
     <string name="tracker_text">Tracker feature currently not available</string>
+    <string name="add_to_tracker">Add this to your tracker</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="steps">Steps</string>
+    <string name="login">Login</string>
+    <string name="login_desc">Find your meal recipe</string>
+    <string name="username">Username</string>
+    <string name="type_username">Type your username</string>
+    <string name="password">Password</string>
+    <string name="type_password">Type your password</string>
+    <string name="create_new_account">Create New Account</string>
+    <string name="register">Register</string>
+    <string name="register_desc">Register and cook</string>
+    <string name="register_now">Register Now</string>
+    <string name="example_chatbot">HI, TRY TYPING IN THE COOKING INGREDIENTS THAT \nYOU HAVE RIGHT NOW</string>
+    <string name="chatbot_hint">Type in the ingredients you have...</string>
+    <string name="hi">Hi,</string>
+    <string name="logout">Logout</string>
 </resources>

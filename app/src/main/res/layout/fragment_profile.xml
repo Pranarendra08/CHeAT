@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
-        android:text="Hi,"
+        android:text="@string/hi"
         android:fontFamily="@font/poppins_semibold"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +48,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/shape_button_new_account"
-        android:text="Logout"
+        android:text="@string/logout"
         android:textSize="15sp"
         android:fontFamily="@font/poppins_semibold"
         android:textAllCaps="false" />
