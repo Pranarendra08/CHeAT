@@ -24,7 +24,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/edt_cheatbot_message"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
@@ -36,10 +36,9 @@
         android:hint="Type in the ingredients you have..."
         android:inputType="textMultiLine|textNoSuggestions"
         android:padding="8dp"
-        android:paddingEnd="45dp"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ic_send_button"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -48,9 +47,9 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:src="@drawable/ic_send_button"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextText"
-        app:layout_constraintEnd_toEndOf="@+id/editTextText"
-        app:layout_constraintTop_toTopOf="@+id/editTextText" />
+        app:layout_constraintBottom_toBottomOf="@+id/edt_cheatbot_message"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/edt_cheatbot_message" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_chatbox"
@@ -60,7 +59,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText"
+        app:layout_constraintBottom_toTopOf="@+id/edt_cheatbot_message"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

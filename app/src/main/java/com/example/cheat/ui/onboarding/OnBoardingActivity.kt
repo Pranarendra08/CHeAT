@@ -28,6 +28,7 @@ class OnBoardingActivity : AppCompatActivity() {
 
         binding.startButton.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
     }
 }

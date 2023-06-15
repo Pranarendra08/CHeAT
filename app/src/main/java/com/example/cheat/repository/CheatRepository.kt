@@ -3,8 +3,10 @@ package com.example.cheat.repository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.cheat.data.remote.response.PostChatbotResponse
 import com.example.cheat.data.remote.response.PostLoginResponse
 import com.example.cheat.data.remote.response.PostRegisterResponse
+import com.example.cheat.data.remote.response.PredictionsItem
 import com.example.cheat.data.remote.retrofit.ApiService
 import com.example.cheat.pref.UserPreference
 import com.example.cheat.utils.Event
@@ -23,6 +25,8 @@ class CheatRepository(private val userPreference: UserPreference, private val ap
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
 
+    private val _chatbot = MutableLiveData<ArrayList<PredictionsItem>>()
+    val chatbot: LiveData<ArrayList<PredictionsItem>> = _chatbot
     fun createUserAccount(username: String, password: String) {
         _isLoading.value = true
         val client = apiService.createUserAccount(username, password)
@@ -47,7 +51,6 @@ class CheatRepository(private val userPreference: UserPreference, private val ap
                 _isLoading.value = false
                 _toastFailed.value = Event(t.message.toString())
             }
-
         })
     }
 
@@ -77,6 +80,34 @@ class CheatRepository(private val userPreference: UserPreference, private val ap
 
             override fun onFailure(call: Call<PostLoginResponse>, t: Throwable) {
                 _toastFailed.value = Event(t.message.toString())
+            }
+
+        })
+    }
+
+    fun chatbot(message: String){
+        _isLoading.value = true
+        val client = apiService.chatbot(message)
+        client.enqueue(object : Callback<PostChatbotResponse> {
+            override fun onResponse(
+                call: Call<PostChatbotResponse>,
+                response: Response<PostChatbotResponse>
+            ) {
+                _isLoading.value = false
+                if (response.isSuccessful) {
+                    val responseBody = response.body()
+                    if (responseBody != null) {
+                        _chatbot.value = response.body()!!.predictions
+                        Log.d("CHEATINGG", "${responseBody}")
+                        Log.d("CHEAT_REPOSITORY", "${response.body()}")
+                    }
+                } else {
+                    _toastFailed.value = Event("Error")
+                }
+            }
+
+            override fun onFailure(call: Call<PostChatbotResponse>, t: Throwable) {
+                _toastFailed.value = Event("Error Apps Onfailure")
             }
 
         })
